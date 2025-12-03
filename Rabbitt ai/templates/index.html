@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Code Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="loader">
+        <i class="fas fa-microchip fa-spin" style="font-size: 50px; color: var(--neon-cyan);"></i>
+        <div class="hacker-text" id="loader-text">INITIALIZING SYSTEM...</div>
+    </div>
+
+    <div class="container">
+        <header style="margin-top: 40px;">
+            <h1 class="header-title">Code Architect</h1>
+            <p class="subtitle">Next-Gen AI Analysis Protocol</p>
+        </header>
+
+        <form action="/process" method="POST" enctype="multipart/form-data" onsubmit="startHacking()">
+            
+            <div class="input-grid">
+                <div class="card" style="animation-delay: 0.1s;">
+                    <label><i class="fas fa-bullseye"></i> Problem Statement</label>
+                    <textarea name="problem_statement" placeholder="> Input mission objective..." required rows="12"></textarea>
+                </div>
+
+                <div class="card" style="animation-delay: 0.2s;">
+                    <label><i class="fas fa-code"></i> Source Code / Logic</label>
+                    <textarea name="solution_text" placeholder="> Paste code for optimization..." rows="12"></textarea>
+                </div>
+            </div>
+
+            <div class="card" style="animation-delay: 0.3s; flex-direction: row; align-items: center; justify-content: space-between;">
+                <div>
+                    <label style="margin-bottom: 0;"><i class="fas fa-file-upload"></i> Optional: Upload File</label>
+                </div>
+                <input type="file" name="solution_file" accept=".txt,.pdf,.doc,.docx,.cpp,.py,.java" style="background: transparent; border: none; padding: 10px; width: auto;">
+            </div>
+
+            <button type="submit" class="cyber-btn">
+                <i class="fas fa-bolt"></i> Execute Analysis
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function startHacking() {
+            const loader = document.getElementById('loader');
+            const textEl = document.getElementById('loader-text');
+            loader.style.display = 'flex';
+            
+            const logs = [
+                "CONNECTING TO NEURAL NET...",
+                "PARSING SYNTAX VECTORS...",
+                "DETECTING ANOMALIES...",
+                "OPTIMIZING ALGORITHMS...",
+                "GENERATING HOLOGRAM..."
+            ];
+            
+            let i = 0;
+            setInterval(() => {
+                if(i < logs.length) {
+                    textEl.innerText = logs[i];
+                    textEl.style.color = i % 2 === 0 ? '#0aff68' : '#00f3ff';
+                    i++;
+                }
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
