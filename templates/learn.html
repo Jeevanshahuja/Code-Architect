@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Module: {{ topic }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='learn.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="heading"> 
+            <h1>Learning Resources for: {{ topic }}</h1>
+            <a href="javascript:void(0);" onclick="window.history.back()" class="nav-btn" style="margin-top: 10px; cursor: pointer;">
+                <i class="fas fa-arrow-left"></i> Back to Analysis
+            </a>
+        </div>
+
+        <div class="resources-container">
+            <div class="resource-box">
+                <h2>YouTube Playlists</h2>
+                {% if yt %}
+                    <ul>
+                        {% for item in yt %}
+                        <li>
+                            <a href="{{ item.playlist_url }}" target="_blank">
+                                <img src="{{ item.thumbnail }}" alt="Thumbnail" width="120" style="vertical-align: middle; margin-right: 10px;">
+                                {{ item.title }} ({{ item.channel }})
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="color: var(--text-dim);">No YouTube playlists found for this topic.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
